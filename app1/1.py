@@ -16,8 +16,12 @@ returns:: This function returns render template in html format
 
 @app.route('/')
 def home():
-    return render_template("loginpage.html")
+    return render_template("signup.html")
 
+@app.route('/action')
+def method():
+    
+    return render_template("loginpage.html")
 
 """
 funtion: signup:: It will check all email validations for register user and 
@@ -35,7 +39,7 @@ def signup():
 
     
     
-    if (verify_Email(email) and  verify_password(password) and verify_phonenumber(phonenumber)):
+    if (validateEmail(email) and verify_password(password) and verify_phonenumber(phonenumber)):
         register.insert_one({"email":email,"phone_no":phonenumber,"user_name":username,"password":password})
         # print(username,password,phonenumber,email)
         return render_template("login.html")
@@ -49,7 +53,7 @@ funtion: verify_Email:: This wil check the email format is valid or not
 
 returns:: This function returns true or false
 """
-def verify_Email(email):
+def validateEmail(email):
     if(email.find("@")!=-1 and email.find(".")!=-1):
         print("valid email")
         return True

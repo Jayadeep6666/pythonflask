@@ -7,12 +7,24 @@ client = pymongo.MongoClient("mongodb+srv://jayadeep:jayadeep@cluster0.jd9mv.mon
 db = client.get_database('total_records')
 register = db.register
 
+"""
+funtion: home:: does not take any parameters
+
+returns:: This function returns render template in html format
+"""
 
 @app.route('/')
 def home():
     
     return render_template("signup.html")
 
+
+"""
+funtion: signup:: It will check all email validations for register user and 
+                    does not take any parameters
+
+returns:: This function returns render template in html format
+"""
 
 @app.route('/mynext',methods=["GET","POST"])
 def signup():
@@ -23,7 +35,7 @@ def signup():
 
     
     
-    if (validateEmail(email) and  password_check(password) and check_phonenumber(phonenumber)):
+    if (verify_Email(email) and  verify_password(password) and verify_phonenumber(phonenumber)):
         register.insert_one({"email":email,"phone_no":phonenumber,"user_name":username,"password":password})
         # print(username,password,phonenumber,email)
         return render_template("login.html")
@@ -31,8 +43,13 @@ def signup():
         return render_template("error.html")
 
 
+"""
+funtion: verify_Email:: This wil check the email format is valid or not 
+                        and does not take any parameters
 
-def validateEmail(email):
+returns:: This function returns true or false
+"""
+def verify_Email(email):
     if(email.find("@")!=-1 and email.find(".")!=-1):
         print("valid email")
         return True
@@ -40,7 +57,14 @@ def validateEmail(email):
         print("not valid email")
         return False
 
-def password_check(password):
+
+"""
+funtion: verify_password:: This wil check the password format  is valid or not and check the required validations
+                        and does not take any parameters
+
+returns:: This function returns true or false
+"""
+def verify_password(password):
           
     SpecialSym =['$', '@', '#', '%']
     val = True
@@ -68,8 +92,15 @@ def password_check(password):
 
 
 
+"""
+funtion: verify_phonenumber:: This wil check the phonenumber format  is valid or not and check the required number validations
+                        and does not take any parameters
+
+returns:: This function returns number valid or not
+"""
+
 import re
-def check_phonenumber(phonenumber):
+def verify_phonenumber(phonenumber):
     phonenumber=str(phonenumber)
     if(len(phonenumber))==10 and (phonenumber.isdigit()):
         output = re.findall(r"^[6789]\d{9}$",phonenumber)
@@ -86,37 +117,6 @@ def check_phonenumber(phonenumber):
 
 
 
-@app.route('/prev',methods=["GET","POST"])
-def login():
-    email=request.form.get("email")
-    password=request.form.get("password")
-    exits=register.find_one({"email":email,"password":password})
-    print(exits)
-    if(exits):
-
-        return render_template("dashboard.html")
-    else:
-        return render_template("error.html")
-
-
-    #     print("invalid")
-
-@app.route('/verify',methods=["GET","POST"])
-def verify():
-    return render_template("verification.html")
-
-
-@app.route('/pass',methods=["GET","POST"])
-def forgot_password():
-    newpassword=request.form.get("newpassword")
-    confirmpassword=request.form.get("confirmpassword")
-    print(newpassword,confirmpassword)
-    if (newpassword ==confirmpassword):
-        print("success")
-        return True
-    else:
-        print("not valid")
-        return False
 
 
 

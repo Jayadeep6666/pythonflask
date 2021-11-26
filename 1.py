@@ -116,6 +116,38 @@ def verify_phonenumber(phonenumber):
         return False
 
 
+"""
+funtion: login:: This will check the register email is matching with entered email or not.
+
+returns:: This will return the render template post format
+"""
+
+@app.route('/prev',methods=["GET","POST"])
+def login():
+    email=request.form.get("email")
+    password=request.form.get("password")
+    exits=register.find_one({"email":email,"password":password})
+    print(exits)
+    if(exits):
+
+        return render_template("dashboard.html")
+    else:
+        return render_template("error.html")
+
+
+    #     print("invalid")
+
+
+"""
+funtion: verify:: This will send the msg that entered emaiul is verified.
+
+returns:: This will return the render template post format
+"""
+@app.route('/verify',methods=["GET","POST"])
+def verify():
+    return render_template("verification.html")
+
+
 
 
 

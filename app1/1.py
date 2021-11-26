@@ -4,7 +4,7 @@ app=Flask(__name__)
 import pymongo
 
 # app.secret_key = "testing"
-client = pymongo.MongoClient("mongodb+srv://jayadeep:jayadeep@cluster0.jd9mv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+client = pymongo.MongoClient("mongodb+srv://rajendraprasad:prasad2021@cluster0.axa6w.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 db = client.get_database('total_records')
 register = db.register
 
@@ -16,6 +16,10 @@ returns:: This function returns render template in html format
 
 @app.route('/')
 def home():
+    return render_template("loginpage.html")
+
+@app.route('/signup')
+def sign():
     return render_template("signup.html")
 
 @app.route('/action')
@@ -42,7 +46,7 @@ def signup():
     if (validateEmail(email) and verify_password(password) and verify_phonenumber(phonenumber)):
         register.insert_one({"email":email,"phone_no":phonenumber,"user_name":username,"password":password})
         # print(username,password,phonenumber,email)
-        return render_template("login.html")
+        return render_template("dashboard.html")
     else:
         return render_template("error.html")
 

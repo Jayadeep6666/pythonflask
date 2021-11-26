@@ -1,280 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-  <body class="align">
-
-    <div class="grid">
-  
-
-      <form action="{{ url_for('signup')}}" method="POST" class="form login">
-  
-        <div class="form__field">
-          <label for="login__username"><svg class="icon">
-              <use xlink:href="#icon-user"></use>
-            </svg><span class="hidden">Name</span></label>
-          <input autocomplete="name" id="login_username" type="text" name="name" class="form_input" placeholder="Name" required>
-        </div>
-  
-
-        <div class="form__field">
-            <label for="login__username"><svg class="icon">
-                <use xlink:href="#icon-user"></use>
-              </svg><span class="hidden">Phone Number</span></label>
-            <input autocomplete="username" id="login_username" type="text" name="username" class="form_input" placeholder="phone number" required>
-          </div>
-
-          <div class="form__field">
-            <label for="login__username"><svg class="icon">
-                <use xlink:href="#icon-user"></use>
-              </svg><span class="hidden">Email id</span></label>
-            <input autocomplete="name" id="login_username" type="text" name="name" class="form_input" placeholder="Email" required>
-          </div>
-
-          <div class="form__field">
-            <label for="login__password"><svg class="icon">
-                <use xlink:href="#icon-lock"></use>
-              </svg><span class="hidden">Phone number</span></label>
-            <input id="login_password" type="password" name="password" class="form_input" placeholder="Password" required>
-          </div>
-        
-  
-        <div class="form__field">
-          <input type="submit" value="Sign In">
-        </div>
-  
-      </form>
-  
-    </div>
-  
-    <svg xmlns="http://www.w3.org/2000/svg" class="icons">
-      <symbol id="icon-arrow-right" viewBox="0 0 1792 1792">
-        <path d="M1600 960q0 54-37 91l-651 651q-39 37-91 37-51 0-90-37l-75-75q-38-38-38-91t38-91l293-293H245q-52 0-84.5-37.5T128 1024V896q0-53 32.5-90.5T245 768h704L656 474q-38-36-38-90t38-90l75-75q38-38 90-38 53 0 91 38l651 651q37 35 37 90z" />
-      </symbol>
-      <symbol id="icon-lock" viewBox="0 0 1792 1792">
-        <path d="M640 768h512V576q0-106-75-181t-181-75-181 75-75 181v192zm832 96v576q0 40-28 68t-68 28H416q-40 0-68-28t-28-68V864q0-40 28-68t68-28h32V576q0-184 132-316t316-132 316 132 132 316v192h32q40 0 68 28t28 68z" />
-      </symbol>
-      <symbol id="icon-user" viewBox="0 0 1792 1792">
-        <path d="M1600 1405q0 120-73 189.5t-194 69.5H459q-121 0-194-69.5T192 1405q0-53 3.5-103.5t14-109T236 1084t43-97.5 62-81 85.5-53.5T538 832q9 0 42 21.5t74.5 48 108 48T896 971t133.5-21.5 108-48 74.5-48 42-21.5q61 0 111.5 20t85.5 53.5 62 81 43 97.5 26.5 108.5 14 109 3.5 103.5zm-320-893q0 159-112.5 271.5T896 896 624.5 783.5 512 512t112.5-271.5T896 128t271.5 112.5T1280 512z" />
-      </symbol>
-    </svg>
+<html>
+ <head>
+    <meta charset="utf-8">
+    <title>Registration Form - 30DaysOfCSS3</title> 
+	 <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans|Nova+Mono|Roboto+Condensed" rel="stylesheet">
+	 <link href="https://fonts.googleapis.com/css?family=Parisienne&display=swap" rel="stylesheet">
+ </head>
+ <body>
+	<div class="content">
+	<section>
+		<div class="register-wrapper">
+		<div class="register-block">
+		<h3 class="register-title">Create an account</h3>
+			<p>Create an account using the form below.</p>
+			<form action="{{ url_for('signup')}}" method = "post">
+        <input type="text" name="username" placeholder="Username"/>
+        <input type="text" name="password" placeholder="Password"/>
+        <input type="phonenumber" name="phonenumber" placeholder="phonenumber" />
+			<input type="email" name="email" placeholder="email"/>
+			
+			<input type="submit" name="submit" value="Create my account"/>
+			</form>
+		</div>
+		</div>
+	</section>
+</div>
+</body>
 <style>
-
-/* config.css */
-
-:root {
-  --baseColor: #606468;
+  body{
+   text-align:center;
+	background-image: linear-gradient(135deg, #007991 30%, #78ffd6 90%);
 }
 
-/* helpers/align.css */
+.register-wrapper {
+     position: relative;
+     z-index: 3;
+     padding: 100px;
+     font-size:18px;
+     color: #999999;
+   }
+.register-wrapper * {
+     box-sizing: border-box;
+   }
 
-.align {
-  display: grid;
-  place-items: center;
-}
+.register-wrapper form input {
+     display: inline-block;
+     width: 100%;
+     padding: 0 20px;
+     line-height: 50px;
+     height: 65px;
+     background-color: white;
+     border: 2px solid #e6e6e6;
+     border-bottom-width: 3px;
+     border-radius: 5px;
+     outline: 0;
+     -webkit-transition: all 0.3s ease;
+     transition: all 0.3s ease;
+   }
 
-.grid {
-  inline-size: 90%;
-  margin-inline: auto;
-  max-inline-size: 20rem;
-}
+.register-wrapper form input:not(:last-child) {
+     margin-bottom: 20px;
+   }
 
-/* helpers/hidden.css */
+	.register-wrapper form input[type="email"]:focus, 
+	.register-wrapper form input[type="email"]:active, 
+	.register-wrapper form input[type="password"]:focus, 
+	.register-wrapper form input[type="password"]:active {
+		  border-color: #cccccc;
+		}
 
-.hidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
+.register-wrapper form input[type="submit"] {
+     position: relative;
+     z-index: 1;
+     display: inline-block;
+     padding: 0 20px;
+     font-size: 1rem;
+     background-color: #f2395a;
+     background-size: 100%;
+		 /* rgba(0, 0, 0, 0) 75%,rgba(0, 0, 0, 0)); */
+     background-image:linear-gradient(45deg,
+		  rgba(255, 255, 255, 0.15) 25%, rgba(0, 0, 0, 0) 25%,
+		  rgba(0, 0, 0, 0) 50%,
+		  rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, rgba(0, 0, 0, 0) 75%,
+		  rgba(0, 0, 0, 0));
+	
+     background-size: 20px 20px, 100% 100%;
+     border: 1px solid #f02146;
+     border-bottom-width: 3px;
+     color: white;
+     outline: none;
+     cursor: pointer;
+     -webkit-transition: all 0.3s ease;
+     transition: all 0.3s ease;
+   }
 
-/* helpers/icon.css */
+.register-wrapper form input[type="submit"]:hover {
+     background-size: 40px 40px;
+   }
+   .register-title {
+     font-size: 1.5em;
+     padding-bottom: 30px;
+     margin: 0 0 20px;
+     border-bottom: 1px dashed #e6e6e6;
+   }
 
-:root {
-  --iconFill: var(--baseColor);
-}
+.register-block {
+     position: relative;
+     display: block;
+     width: 100%;
+     max-width: 300px;
+     margin: auto;
+     padding: 30px;
+     background-color: white;
+     box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+     border-radius: 5px;
+	
+   }
 
-.icons {
-  display: none;
-}
+.register-block:before, 
+.register-block:after {
+     position: absolute;
+     z-index: -1;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     display: block;
+     width: 100%;
+     height: 100%;
+     content: "";
+     background-color: white;
+     border: 1px solid #e6e6e6;
+     border-radius: 5px;
+     -webkit-transform: scale(0.9) translate(0, 0);
+             transform: scale(0.9) translate(0, 0);
+     -webkit-transition: all 0.3s ease;
+     transition: all 0.3s ease;
+   }
 
-.icon {
-  block-size: 1em;
-  display: inline-block;
-  fill: var(--iconFill);
-  inline-size: 1em;
-  vertical-align: middle;
-}
+.register-block:hover:before {
+     z-index: -1;
+     -webkit-transform: scale(0.96) translate(0, 16px);
+             transform: scale(0.96) translate(0, 16px);
+   }
 
-/* layout/base.css */
+.register-block:hover:after {
+     z-index: -2;
+     -webkit-transform: scale(0.92) translate(0, 32px);
+             transform: scale(0.92) translate(0, 32px);
+   }
 
-:root {
-  --htmlFontSize: 100%;
+h1,a{
+		font-family: 'Parisienne', cursive;
+		color: #fff;
+		font-size:50px;
+		text-decoration: none;
+		text-shadow: 2px 2px 3px lightblue;
+		padding-top:35px;
+  }
 
-  --bodyBackgroundColor: #2c3338;
-  --bodyColor: var(--baseColor);
-  --bodyFontFamily: "Open Sans";
-  --bodyFontFamilyFallback: sans-serif;
-  --bodyFontSize: 0.875rem;
-  --bodyFontWeight: 400;
-  --bodyLineHeight: 1.5;
-}
-
-* {
-  box-sizing: inherit;
-}
-
-html {
-  box-sizing: border-box;
-  font-size: var(--htmlFontSize);
-}
-
-body {
-  background-color: var(--bodyBackgroundColor);
-  color: var(--bodyColor);
-  font-family: var(--bodyFontFamily), var(--bodyFontFamilyFallback);
-  font-size: var(--bodyFontSize);
-  font-weight: var(--bodyFontWeight);
-  line-height: var(--bodyLineHeight);
-  margin: 0;
-  min-block-size: 100vh;
-}
-
-/* modules/anchor.css */
-
-:root {
-  --anchorColor: #eee;
-}
-
-a {
-  color: var(--anchorColor);
-  outline: 0;
-  text-decoration: none;
-}
-
-a:focus,
-a:hover {
-  text-decoration: underline;
-}
-
-/* modules/form.css */
-
-:root {
-  --formGap: 0.875rem;
-}
-
-input {
-  background-image: none;
-  border: 0;
-  color: inherit;
-  font: inherit;
-  margin: 0;
-  outline: 0;
-  padding: 0;
-  transition: background-color 0.3s;
-}
-
-input[type="submit"] {
-  cursor: pointer;
-}
-
-.form {
-  display: grid;
-  gap: var(--formGap);
-}
-
-.form input[type="password"],
-.form input[type="text"],
-.form input[type="submit"] {
-  inline-size: 100%;
-}
-
-.form__field {
-  display: flex;
-}
-
-.form__input {
-  flex: 1;
-}
-
-/* modules/login.css */
-
-:root {
-  --loginBorderRadus: 0.25rem;
-  --loginColor: #eee;
-
-  --loginInputBackgroundColor: #3b4148;
-  --loginInputHoverBackgroundColor: #434a52;
-
-  --loginLabelBackgroundColor: #363b41;
-
-  --loginSubmitBackgroundColor: #ea4c88;
-  --loginSubmitColor: #eee;
-  --loginSubmitHoverBackgroundColor: #d44179;
-}
-
-.login {
-  color: var(--loginColor);
-}
-
-.login label,
-.login input[type="text"],
-.login input[type="password"],
-.login input[type="submit"] {
-  border-radius: var(--loginBorderRadus);
-  padding: 1rem;
-}
-
-.login label {
-  background-color: var(--loginLabelBackgroundColor);
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-  padding-inline: 1.25rem;
-}
-
-.login input[type="password"],
-.login input[type="text"] {
-  background-color: var(--loginInputBackgroundColor);
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-}
-
-.login input[type="password"]:focus,
-.login input[type="password"]:hover,
-.login input[type="text"]:focus,
-.login input[type="text"]:hover {
-  background-color: var(--loginInputHoverBackgroundColor);
-}
-
-.login input[type="submit"] {
-  background-color: var(--loginSubmitBackgroundColor);
-  color: var(--loginSubmitColor);
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.login input[type="submit"]:focus,
-.login input[type="submit"]:hover {
-  background-color: var(--loginSubmitHoverBackgroundColor);
-}
-
-/* modules/text.css */
-
-p {
-  margin-block: 1.5rem;
-}
-
-.text--center {
-  text-align: center;
-}
 </style>
-  </body>
 </html>

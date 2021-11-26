@@ -1,6 +1,6 @@
 from flask import Flask,render_template,request
 # from flask_mysqldb import MySQL
-app=Flask(_name_)
+app=Flask(__name__)
 import pymongo
 # app.secret_key = "testing"
 client = pymongo.MongoClient("mongodb+srv://jayadeep:jayadeep@cluster0.jd9mv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
@@ -120,5 +120,5 @@ def forgot_password():
 
 
 
-if _name=='main_':
+if __name__=='main_':
     app.run(debug=True)

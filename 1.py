@@ -147,7 +147,17 @@ returns:: This will return the render template post format
 def verify():
     return render_template("verification.html")
 
-
+@app.route('/pass',methods=["GET","POST"])
+def forgot_password():
+    newpassword=request.form.get("newpassword")
+    confirmpassword=request.form.get("confirmpassword")
+    print(newpassword,confirmpassword)
+    if (newpassword ==confirmpassword):
+        print("success")
+        return True
+    else:
+        print("not valid")
+        return False
 
 
 

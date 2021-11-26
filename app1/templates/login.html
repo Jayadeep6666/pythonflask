@@ -1,18 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-    <title>LogIn page</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <h1>login</h1>
-    <form action="{{ url_for('login')}}" method ="post">                    
-        <input type='email' name='email' placeholder='enter your email'><br><br>
-        <input type='password' name='password' placeholder='enter password'><br><br>
-        <a href="/verify">   forgot password </a>
-
-        <button>submit</button>
-    </form>
-    
+    <section class="joinnow">
+        <div>
+          <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="exampleInputPassword1"
+              />
+            </div>
+      
+            <a href="/password">Forget Password?</a>
+            <br />
+            <button
+              type="submit"
+              class="submit-btn"
+            >
+              LOGIN
+            </button>
+          </form>
+          <br />
+          <p>Dont have account? click here <a href="/register">Register</a></p>
+        </div>
+      </section>
+      
 </body>
 </html>

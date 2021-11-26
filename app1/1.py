@@ -2,6 +2,7 @@ from flask import Flask,render_template,request
 # from flask_mysqldb import MySQL
 app=Flask(__name__)
 import pymongo
+
 # app.secret_key = "testing"
 client = pymongo.MongoClient("mongodb+srv://jayadeep:jayadeep@cluster0.jd9mv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 db = client.get_database('total_records')
@@ -15,8 +16,7 @@ returns:: This function returns render template in html format
 
 @app.route('/')
 def home():
-    
-    return render_template("signup.html")
+    return render_template("loginpage.html")
 
 
 """
@@ -162,7 +162,7 @@ def forgot_password():
 
 
 
-if __name__=='main_':
+if __name__=='__main__':
     app.run(debug=True)
 
 

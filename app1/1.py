@@ -16,6 +16,10 @@ returns:: This function returns render template in html format
 
 @app.route('/')
 def home():
+    return render_template("loginpage.html")
+
+@app.route('/signup')
+def su():
     return render_template("signup.html")
 
 @app.route('/action')
